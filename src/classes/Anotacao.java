@@ -37,7 +37,7 @@ public class Anotacao {
 		texto = novo;
 	}
 	
-	public void setDesempenho(double novo){
+	public void setDesempenho(double novo){//valor de 0 a 10
 		desempenho = novo;
 	}
 /* note que aqui ja é uma ação mais relacionada com o 

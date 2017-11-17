@@ -1,6 +1,6 @@
 package classes;
 
-public class MainBicicleta {
+public class MainBicicletaAssento {
 
 	public static void main(String[] args) {
 		Assento a1 = new Assento("gel", 120);
@@ -11,5 +11,13 @@ public class MainBicicleta {
 		b1.setAssento(a2);
 		System.out.println(b1.getAssento());
 		System.out.println(b2);
+		String modelo = null;
+		if(modelo == null){
+			System.out.println("Nao pode usar modelo como null");
+		}else{
+			Bicicleta b3 = new Bicicleta(10, modelo);
+		}
+		
+		
 	}
 }

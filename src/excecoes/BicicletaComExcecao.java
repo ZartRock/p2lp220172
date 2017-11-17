@@ -1,28 +1,41 @@
-package classes;
+package excecoes;
+
+import classes.Assento;
 
 /* 
- * Mais objetos
+ * Introduzindo exceções
  * 
  * Por: Lívia Sampaio Campos
  * Observacao: Esse codigo é uma prova de conceito,
  * portanto, pode estar incompleto ou com algumas 
  * simplificações.
  */
-public class Bicicleta{
+public class BicicletaComExcecao{
 	protected double velocidadeAtual;
 	private double velocidadeMaxima;
 	private String modelo;
 	private Assento assento;
 
 	
-	public Bicicleta(double velocidadeMaxima, String modelo, Assento assento){	
+	public BicicletaComExcecao(double velocidadeMaxima, String modelo, Assento assento){
+		checaExcecaoObjetoNulo(modelo);
+		checaExcecaoObjetoNulo(assento);
+		//ou poderia ter feito assim
+		/*if(modelo == null || assento == null){
+			throw new NullPointerException("modelo ou assento nulos em bicicleta!");
+		}*/
+		
+		if(modelo.equals("")){
+			throw new IllegalArgumentException();
+		}
+		
 		velocidadeAtual = 0;
 		this.velocidadeMaxima = velocidadeMaxima;
 		this.modelo = modelo;
 		this.assento = assento;
 	}
 	
-	public Bicicleta(double velocidadeMaxima, String modelo) {
+	public BicicletaComExcecao(double velocidadeMaxima, String modelo) {
 		this(velocidadeMaxima, modelo, new Assento("espuma", 125));
 	}
 	
@@ -43,10 +56,17 @@ public class Bicicleta{
 	}
 
 	public void setAssento(Assento novo){
+		//note que aqui tambem nao queremos assento nulos!
+		checaExcecaoObjetoNulo(novo);
 		assento = novo;
 
 	}
 
+	private void checaExcecaoObjetoNulo(Object obj){
+		if(obj == null){
+			throw new NullPointerException("Referencia null!");
+		}
+	}
 	public void acelera() {
 		velocidadeAtual = (velocidadeAtual + 2 > getVelocidadeMaxima()) ? getVelocidadeMaxima() : velocidadeAtual + 2;
 	}
@@ -65,10 +85,10 @@ public class Bicicleta{
 	
 	@Override
 	public boolean equals(Object b2){
-		if(!(b2 instanceof Bicicleta)){
+		if(!(b2 instanceof BicicletaComExcecao)){
 			return false;
 		}
-		Bicicleta b3 = (Bicicleta) b2;
+		BicicletaComExcecao b3 = (BicicletaComExcecao) b2;
 		return this.getModelo().equals(b3.getModelo()) &&
 				this.getAssento().equals(b3.getAssento());
 	}
