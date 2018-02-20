@@ -58,6 +58,10 @@ public class Bicicleta{
 		velocidadeAtual = 0;
 	}
 	
+	public boolean temConforto(double larguraQuadril){
+		return assento.temConforto(larguraQuadril);
+	}
+	
 	@Override
 	public String toString() {
 		return "Super bike " + getModelo();

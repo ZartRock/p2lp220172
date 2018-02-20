@@ -18,6 +18,8 @@ public class MainBicicletaAssento {
 			Bicicleta b3 = new Bicicleta(10, modelo);
 		}
 		
+		b1.temConforto(10);
+		
 		
 	}
 }
