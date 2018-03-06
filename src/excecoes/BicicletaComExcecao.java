@@ -17,7 +17,7 @@ public class BicicletaComExcecao{
 	private Assento assento;
 
 	
-	public BicicletaComExcecao(double velocidadeMaxima, String modelo, Assento assento){
+	public BicicletaComExcecao(double velocidadeMaxima, String modelo, Assento assento) throws Exception{
 		checaExcecaoObjetoNulo(modelo);
 		checaExcecaoObjetoNulo(assento);
 		//ou poderia ter feito assim
@@ -27,6 +27,7 @@ public class BicicletaComExcecao{
 		
 		if(modelo.equals("")){
 			throw new IllegalArgumentException();
+			//throw new Exception("mmm");
 		}
 		
 		velocidadeAtual = 0;
@@ -35,7 +36,7 @@ public class BicicletaComExcecao{
 		this.assento = assento;
 	}
 	
-	public BicicletaComExcecao(double velocidadeMaxima, String modelo) {
+	public BicicletaComExcecao(double velocidadeMaxima, String modelo) throws Exception{
 		this(velocidadeMaxima, modelo, new Assento("espuma", 125));
 	}
 	
@@ -91,6 +92,14 @@ public class BicicletaComExcecao{
 		BicicletaComExcecao b3 = (BicicletaComExcecao) b2;
 		return this.getModelo().equals(b3.getModelo()) &&
 				this.getAssento().equals(b3.getAssento());
+	}
+	public static void main(String[] args) {
+		try{
+		
+			BicicletaComExcecao b = new BicicletaComExcecao(200, "xx");
+		}catch(Exception e){
+			
+		}
 	}
 
 }

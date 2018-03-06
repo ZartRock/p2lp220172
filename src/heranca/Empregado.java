@@ -1,6 +1,8 @@
 package heranca;
 
-public abstract class Empregado implements Comparable<Empregado>{
+import java.io.Serializable;
+
+public abstract class Empregado implements Comparable<Empregado>, Serializable{
 	private String cpf;
 	private int matricula;
 	private String nome;

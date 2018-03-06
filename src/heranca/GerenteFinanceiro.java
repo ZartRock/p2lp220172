@@ -1,8 +1,13 @@
 package heranca;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GerenteFinanceiro {
+public class GerenteFinanceiro implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Empregado> contas = new ArrayList<>();
 	
 	public void cadastraConta(Empregado f){
@@ -31,22 +36,5 @@ public class GerenteFinanceiro {
 		return resultado;
 	}
 
-	public static void main(String[] args) {
-		GerenteFinanceiro p2t1sa = new GerenteFinanceiro();
-		Horista zezinho = new Horista("Zezinho da Disney", "123", 1);
-		Assalariado huguinho = new Assalariado("Huguinho da Disney", "234", 2, 880);
-		zezinho.setHorasTrabalhadas(10);
-		zezinho.setPrecoPorHora(10);
-		huguinho.setQtdDependentes(2);
-		p2t1sa.cadastraConta(zezinho);
-		p2t1sa.cadastraConta(huguinho);
-		
-		System.out.println("Gasto total: " + p2t1sa.calculaGastoTotal());
-		
-		//gera folha de pagamento e imprime
-		System.out.println(p2t1sa.geraFolhaPagamento());
-		
-		
-	}
 
 }
